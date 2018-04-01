@@ -57,7 +57,7 @@ public class SaperGame extends JFrame {
     /**
      * Реализация подгрузки картинки
      * @param name Имя картинки
-     * @return
+     * @return ImageIcon
      */
     private Image getImage(String name) {
         String filename = "img/" + name.toLowerCase() + ".png";
