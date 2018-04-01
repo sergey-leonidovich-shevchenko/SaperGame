@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import saper.Box;
 
 public class SaperGame extends JFrame {
 
@@ -16,6 +17,7 @@ public class SaperGame extends JFrame {
 
     // Конструктор текущего объекта
     private SaperGame () {
+        setImages();
         initPanel();
         initFrame();
     }
@@ -29,9 +31,11 @@ public class SaperGame extends JFrame {
              */
             @Override
             protected void paintComponent(Graphics g) {
-                // Вывод картинок
-                g.drawImage(getImage("bomb"), 0, 0, this);
-                g.drawImage(getImage("num1"), IMAGE_SIZE, 0, this);
+                super.paintComponent(g);
+                // Вывод всех картинок
+                for (Box box : Box.values()) {
+                    g.drawImage((Image)box.image, box.ordinal() * IMAGE_SIZE, 0, this);
+                }
             }
         };
         panel.setPreferredSize(new Dimension(COLS * IMAGE_SIZE, ROWS * IMAGE_SIZE));
@@ -54,13 +58,21 @@ public class SaperGame extends JFrame {
         setVisible(true);
     }
 
+    // Установка всех картинок
+    private void setImages() {
+        // Перебираем все картинки
+        for (Box box : Box.values()) {
+            box.image = getImage(box.name().toLowerCase());
+        }
+    }
+
     /**
      * Реализация подгрузки картинки
      * @param name Имя картинки
      * @return ImageIcon
      */
     private Image getImage(String name) {
-        String filename = "img/" + name.toLowerCase() + ".png";
+        String filename = "img/" + name + ".png";
         ImageIcon icon = new ImageIcon(getClass().getResource(filename));
         return icon.getImage();
     }
