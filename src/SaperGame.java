@@ -3,7 +3,12 @@ import java.awt.*;
 
 public class SaperGame extends JFrame {
 
+    // Панель внутри фрейма
     private JPanel panel;
+
+    private final int COLS = 15;
+    private final int ROWS = 1;
+    private final int IMAGE_SIZE = 50;
 
     public static void main(String[] args) {
         new SaperGame();
@@ -18,7 +23,7 @@ public class SaperGame extends JFrame {
     // Инициализируем панель внутри фрейма с заданными размерами
     private void initPanel() {
         panel = new JPanel();
-        panel.setPreferredSize(new Dimension(500, 500));
+        panel.setPreferredSize(new Dimension(COLS * IMAGE_SIZE, ROWS * IMAGE_SIZE));
         add(panel);
     }
 
