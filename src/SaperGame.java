@@ -22,7 +22,18 @@ public class SaperGame extends JFrame {
 
     // Инициализируем панель внутри фрейма с заданными размерами
     private void initPanel() {
-        panel = new JPanel();
+        panel = new JPanel() {
+            /**
+             * Рисуем графику в панели
+             * @param g Графика для рисования изображения
+             */
+            @Override
+            protected void paintComponent(Graphics g) {
+                // Вывод картинок
+                g.drawImage(getImage("bomb"), 0, 0, this);
+                g.drawImage(getImage("num1"), IMAGE_SIZE, 0, this);
+            }
+        };
         panel.setPreferredSize(new Dimension(COLS * IMAGE_SIZE, ROWS * IMAGE_SIZE));
         add(panel);
     }
@@ -41,5 +52,16 @@ public class SaperGame extends JFrame {
         setResizable(Boolean.parseBoolean("false"));
         // Делаем программу видимой
         setVisible(true);
+    }
+
+    /**
+     * Реализация подгрузки картинки
+     * @param name Имя картинки
+     * @return
+     */
+    private Image getImage(String name) {
+        String filename = "img/" + name.toLowerCase() + ".png";
+        ImageIcon icon = new ImageIcon(getClass().getResource(filename));
+        return icon.getImage();
     }
 }
