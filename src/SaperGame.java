@@ -3,10 +3,13 @@ import java.awt.*;
 
 import saper.Box;
 import saper.Coord;
+import saper.Game;
 import saper.Ranges;
 
 public class SaperGame extends JFrame {
 
+    // Поле игры
+    private Game   game;
     // Панель внутри фрейма
     private JPanel panel;
 
@@ -20,7 +23,7 @@ public class SaperGame extends JFrame {
 
     // Конструктор текущего объекта
     private SaperGame() {
-        Ranges.setSize(new Coord(COLS, ROWS));
+        game = new Game(COLS, ROWS);
         setImages();
         initPanel();
         initFrame();
@@ -39,7 +42,7 @@ public class SaperGame extends JFrame {
                 // Вывод всех картинок
                 for (Coord coord : Ranges.getAllCoords()) {
                     g.drawImage(
-                            (Image) Box.values()[(coord.x + coord.y) % Box.values().length].image,
+                            (Image) game.getBox(coord).image,
                             coord.x * IMAGE_SIZE,
                             coord.y * IMAGE_SIZE,
                             this
