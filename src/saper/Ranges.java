@@ -10,7 +10,7 @@ public class Ranges {
     // Список всех координат
     private static ArrayList<Coord> allCoords;
     // Случайная координата
-    private static Random random = new Random();
+    private static Random           random = new Random();
 
     /**
      * Getter for static property 'size'.
@@ -60,9 +60,37 @@ public class Ranges {
 
     /**
      * Возвращение случайной координаты
+     *
      * @return
      */
     static Coord getRandomCoord() {
         return new Coord(random.nextInt(size.x), random.nextInt(size.y));
+    }
+
+    /**
+     * Возвращаем координаты вокруг выбранной координаты
+     *
+     * @param coord Выбранная координата
+     * @return ArrayList Список координат находящихся вокруг выбранной
+     */
+    static ArrayList<Coord> getCoordsAround(Coord coord) {
+        Coord around;
+        ArrayList<Coord> list = new ArrayList<>();
+
+        // Багаем по соседним координатам
+        for (int x = coord.x - 1; x <= coord.x + 1; x++) {
+            for (int y = coord.y - 1; y <= coord.y + 1; y++) {
+                around = new Coord(x, y);
+                // Если данная координата присутствует на игровом поле
+                if (inRange(around)) {
+                    // Если данная координата не центральная, вокруг ведется поиск
+                    if (!around.equals(coord)) {
+                        list.add(around);
+                    }
+                }
+            }
+        }
+
+        return list;
     }
 }
