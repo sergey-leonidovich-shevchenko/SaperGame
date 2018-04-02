@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import saper.Box;
+import saper.Coord;
 
 public class SaperGame extends JFrame {
 
@@ -35,7 +36,8 @@ public class SaperGame extends JFrame {
                 super.paintComponent(g);
                 // Вывод всех картинок
                 for (Box box : Box.values()) {
-                    g.drawImage((Image) box.image, box.ordinal() * IMAGE_SIZE, 0, this);
+                    Coord coord = new Coord(box.ordinal() * IMAGE_SIZE, 0);
+                    g.drawImage((Image) box.image, coord.x, coord.y, this);
                 }
             }
         };
