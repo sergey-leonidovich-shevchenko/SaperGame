@@ -23,7 +23,7 @@ public class Ranges {
      *
      * @param _size Value to set for static property 'size'.
      */
-    public static void setSize(Coord _size) {
+    static void setSize(Coord _size) {
         size = _size;
 
         // Перебираем все координаты
@@ -41,5 +41,15 @@ public class Ranges {
      */
     public static ArrayList<Coord> getAllCoords () {
         return allCoords;
+    }
+
+    /**
+     * Проверка: находимся ли мы в пределах наших координат
+     * @param coord Координата
+     * @return Boolean
+     */
+    static boolean inRange (Coord coord) {
+        return coord.x >= 0 && coord.x < size.x
+               && coord.y >= 0 && coord.y < size.y;
     }
 }

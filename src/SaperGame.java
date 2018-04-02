@@ -24,6 +24,7 @@ public class SaperGame extends JFrame {
     // Конструктор текущего объекта
     private SaperGame() {
         game = new Game(COLS, ROWS);
+        game.start();
         setImages();
         initPanel();
         initFrame();
@@ -61,8 +62,6 @@ public class SaperGame extends JFrame {
 
     // Инициализируем фрейм программы
     private void initFrame() {
-        // Устанавливаем такой минимальный размер фрейма, который достаточен для отображения всех элементов
-        pack();
         // Закрытие программы по крестику окна
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // Устанавливаем заголовок окна
@@ -75,6 +74,8 @@ public class SaperGame extends JFrame {
         setVisible(true);
         // Ставим иконку программы (отображается на панели задач)
         setIconImage(getImage("icon"));
+        // Устанавливаем такой минимальный размер фрейма, который достаточен для отображения всех элементов
+        pack();
     }
 
     // Установка всех картинок
