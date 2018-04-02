@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ranges {
 
     // Размер координаты
-    private static Coord size;
+    private static Coord            size;
     // Список всех координат
     private static ArrayList<Coord> allCoords;
 
@@ -37,19 +37,21 @@ public class Ranges {
 
     /**
      * Получить список всех координат
+     *
      * @return ArrayList<Coord>
      */
-    public static ArrayList<Coord> getAllCoords () {
+    public static ArrayList<Coord> getAllCoords() {
         return allCoords;
     }
 
     /**
      * Проверка: находимся ли мы в пределах наших координат
+     *
      * @param coord Координата
      * @return Boolean
      */
-    static boolean inRange (Coord coord) {
+    static boolean inRange(Coord coord) {
         return coord.x >= 0 && coord.x < size.x
-               && coord.y >= 0 && coord.y < size.y;
+                && coord.y >= 0 && coord.y < size.y;
     }
 }

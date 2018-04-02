@@ -15,6 +15,7 @@ public class SaperGame extends JFrame {
 
     private final int COLS       = 9;
     private final int ROWS       = 9;
+    private final int COUNT_BOMB = 9;
     private final int IMAGE_SIZE = 50;
 
     public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class SaperGame extends JFrame {
 
     // Конструктор текущего объекта
     private SaperGame() {
-        game = new Game(COLS, ROWS);
+        game = new Game(COLS, ROWS, COUNT_BOMB);
         game.start();
         setImages();
         initPanel();

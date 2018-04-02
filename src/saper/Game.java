@@ -2,14 +2,23 @@ package saper;
 
 public class Game {
 
-    Matrix bombMap;
+    private Bomb bomb;
 
-    public Game(int cols, int rows) {
+    /**
+     * Конструктор
+     *
+     * @param cols      Количество колонок в игровом поле
+     * @param rows      Количество строк в игровом поле
+     * @param countBomb Общее количество бомб на поле
+     */
+    public Game(int cols, int rows, int countBomb) {
         Ranges.setSize(new Coord(cols, rows));
+        bomb = new Bomb(countBomb);
     }
 
+    // Размещение бомб на поле
     public void start() {
-        bombMap = new Matrix(Box.ZERO);
+        bomb.start();
     }
 
     /**
@@ -19,6 +28,6 @@ public class Game {
      * @return Value for property 'box'.
      */
     public Box getBox(Coord coord) {
-        return bombMap.get(coord);
+        return bomb.get(coord);
     }
 }

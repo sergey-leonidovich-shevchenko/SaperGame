@@ -8,6 +8,7 @@ class Matrix {
 
     /**
      * Конструктор заполняющий всю матрицу поля
+     *
      * @param defaultBox Сущность по умолчанию
      */
     Matrix(Box defaultBox) {
@@ -17,7 +18,7 @@ class Matrix {
         }
     }
 
-    Box get (Coord coord) {
+    Box get(Coord coord) {
         // Что бы не было переполнения массива,
         // его нужно проверить, находимся ли мы в пределах экрана
         if (Ranges.inRange(coord)) {
@@ -27,7 +28,7 @@ class Matrix {
         return null;
     }
 
-    void set (Coord coord, Box box) {
+    void set(Coord coord, Box box) {
         // Что бы не было переполнения массива,
         // его нужно проверить, находимся ли мы в пределах экрана
         if (Ranges.inRange(coord)) {
