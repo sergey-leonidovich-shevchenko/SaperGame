@@ -1,6 +1,7 @@
 package saper;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Ranges {
 
@@ -8,6 +9,8 @@ public class Ranges {
     private static Coord            size;
     // Список всех координат
     private static ArrayList<Coord> allCoords;
+    // Случайная координата
+    private static Random random = new Random();
 
     /**
      * Getter for static property 'size'.
@@ -53,5 +56,13 @@ public class Ranges {
     static boolean inRange(Coord coord) {
         return coord.x >= 0 && coord.x < size.x
                 && coord.y >= 0 && coord.y < size.y;
+    }
+
+    /**
+     * Возвращение случайной координаты
+     * @return
+     */
+    static Coord getRandomCoord() {
+        return new Coord(random.nextInt(size.x), random.nextInt(size.y));
     }
 }
