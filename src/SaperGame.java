@@ -3,14 +3,15 @@ import java.awt.*;
 
 import saper.Box;
 import saper.Coord;
+import saper.Ranges;
 
 public class SaperGame extends JFrame {
 
     // Панель внутри фрейма
     private JPanel panel;
 
-    private final int COLS       = 15;
-    private final int ROWS       = 1;
+    private final int COLS       = 9;
+    private final int ROWS       = 9;
     private final int IMAGE_SIZE = 50;
 
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class SaperGame extends JFrame {
 
     // Конструктор текущего объекта
     private SaperGame() {
+        Ranges.setSize(new Coord(COLS, ROWS));
         setImages();
         initPanel();
         initFrame();
@@ -35,13 +37,22 @@ public class SaperGame extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Вывод всех картинок
-                for (Box box : Box.values()) {
-                    Coord coord = new Coord(box.ordinal() * IMAGE_SIZE, 0);
-                    g.drawImage((Image) box.image, coord.x, coord.y, this);
+                for (Coord coord : Ranges.getAllCoords()) {
+                    g.drawImage(
+                            (Image) Box.values()[(coord.x + coord.y) % Box.values().length].image,
+                            coord.x * IMAGE_SIZE,
+                            coord.y * IMAGE_SIZE,
+                            this
+                    );
                 }
             }
         };
-        panel.setPreferredSize(new Dimension(COLS * IMAGE_SIZE, ROWS * IMAGE_SIZE));
+
+        panel.setPreferredSize(new Dimension(
+                Ranges.getSize().x * IMAGE_SIZE,
+                Ranges.getSize().y * IMAGE_SIZE
+        ));
+
         add(panel);
     }
 
