@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+
 import saper.Box;
 
 public class SaperGame extends JFrame {
@@ -7,8 +8,8 @@ public class SaperGame extends JFrame {
     // Панель внутри фрейма
     private JPanel panel;
 
-    private final int COLS = 15;
-    private final int ROWS = 1;
+    private final int COLS       = 15;
+    private final int ROWS       = 1;
     private final int IMAGE_SIZE = 50;
 
     public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class SaperGame extends JFrame {
     }
 
     // Конструктор текущего объекта
-    private SaperGame () {
+    private SaperGame() {
         setImages();
         initPanel();
         initFrame();
@@ -34,7 +35,7 @@ public class SaperGame extends JFrame {
                 super.paintComponent(g);
                 // Вывод всех картинок
                 for (Box box : Box.values()) {
-                    g.drawImage((Image)box.image, box.ordinal() * IMAGE_SIZE, 0, this);
+                    g.drawImage((Image) box.image, box.ordinal() * IMAGE_SIZE, 0, this);
                 }
             }
         };
@@ -56,6 +57,8 @@ public class SaperGame extends JFrame {
         setResizable(Boolean.parseBoolean("false"));
         // Делаем программу видимой
         setVisible(true);
+        // Ставим иконку программы (отображается на панели задач)
+        setIconImage(getImage("icon"));
     }
 
     // Установка всех картинок
@@ -68,6 +71,7 @@ public class SaperGame extends JFrame {
 
     /**
      * Реализация подгрузки картинки
+     *
      * @param name Имя картинки
      * @return ImageIcon
      */
